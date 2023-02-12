@@ -18,8 +18,8 @@ async function getPosts(limit: number | null = null) {
 	}
 
 	return await prisma.post.findMany({
-		take: limit,
 		...GET_POST_SELECT_FIELDS,
+		take: limit,
 	})
 }
 
