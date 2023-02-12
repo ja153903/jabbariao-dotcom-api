@@ -1,12 +1,15 @@
 import dotenv from 'dotenv'
-import Express from 'express'
+import express from 'express'
 
 import { postRouter } from '@/features/posts'
 
 dotenv.config()
 
-const app = Express()
+const app = express()
 const port = process.env.PORT || 3000
+
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 
 app.use('/api/v1/posts', postRouter)
 
