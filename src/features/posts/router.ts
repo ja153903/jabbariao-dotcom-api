@@ -37,6 +37,27 @@ router.get('/', async (req: GetPostsRequest, res: Response) => {
 	}
 })
 
+type CreatePostRequest = Request<unknown, unknown, CreatePostSchema, unknown>
+
+router.post('/', async (req: CreatePostRequest, res: Response) => {
+	const post = req.body
+
+	try {
+		const newPost = await createPost(post)
+		res.status(200).send({
+			data: {
+				post: newPost,
+			},
+		})
+	} catch {
+		res.status(400).send({
+			error: {
+				message: 'Could not create post',
+			},
+		})
+	}
+})
+
 type GetPostByIdRequest = Request<
 	RequestParamsWithId,
 	unknown,
@@ -78,27 +99,6 @@ router.delete('/:id', async (req: DeletePostByIdRequest, res: Response) => {
 		res.status(404).send({
 			error: {
 				message: `Cannot delete post with id ${id}`,
-			},
-		})
-	}
-})
-
-type CreatePostRequest = Request<unknown, unknown, CreatePostSchema, unknown>
-
-router.post('/', async (req: CreatePostRequest, res: Response) => {
-	const post = req.body
-
-	try {
-		const newPost = await createPost(post)
-		res.status(200).send({
-			data: {
-				post: newPost,
-			},
-		})
-	} catch {
-		res.status(400).send({
-			error: {
-				message: 'Could not create post',
 			},
 		})
 	}
