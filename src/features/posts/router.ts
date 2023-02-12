@@ -3,6 +3,7 @@ import type { Request, Response } from 'express'
 
 import type { RequestParamsWithId } from '@/types/api'
 
+import type { CreatePostSchema, UpdatePostSchema } from './schema'
 import {
 	createPost,
 	deletePost,
@@ -10,7 +11,6 @@ import {
 	getPostById,
 	updatePost,
 } from './service'
-import type { CreatePostSchema, UpdatePostSchema } from './schema'
 
 const router = Router()
 
