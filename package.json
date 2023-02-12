@@ -2,7 +2,7 @@
 	"name": "jabbariao-dotcom-api",
 	"version": "0.0.1",
 	"description": "Monolithic API for jabbariao.com",
-	"main": "index.js",
+	"main": "dist/index.js",
 	"scripts": {
 		"build": "tsc --build",
 		"clean": "tsc --build --clean",
@@ -25,10 +25,12 @@
 		"@prisma/client": "^4.9.0",
 		"dotenv": "^16.0.3",
 		"express": "^4.18.2",
+		"module-alias": "^2.2.2",
 		"prisma": "^4.9.0"
 	},
 	"devDependencies": {
 		"@types/express": "^4.17.17",
+		"@types/module-alias": "^2.0.1",
 		"@types/node": "^18.11.19",
 		"@typescript-eslint/eslint-plugin": "^5.50.0",
 		"@typescript-eslint/parser": "^5.50.0",
@@ -38,5 +40,8 @@
 		"nodemon": "^2.0.20",
 		"prettier": "^2.8.3",
 		"typescript": "^4.9.5"
+	},
+	"_moduleAliases": {
+		"@": "dist"
 	}
 }
