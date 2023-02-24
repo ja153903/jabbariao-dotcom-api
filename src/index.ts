@@ -1,15 +1,12 @@
-/** This is necessary for Node to pick up path aliases */
 import 'module-alias/register'
 
-/** Initialize environment variables */
 import dotenv from 'dotenv'
+import express from 'express'
 import path from 'path'
 
 dotenv.config({
 	path: path.resolve(__dirname, `.env.${process.env.NODE_ENV}`),
 })
-
-import express from 'express'
 
 import { postRouter } from '@/features/posts'
 
